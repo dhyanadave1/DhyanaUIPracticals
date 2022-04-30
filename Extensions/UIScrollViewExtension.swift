@@ -7,48 +7,47 @@
 
 import UIKit
 
+
 extension UIScrollView {
 
-    
 
-    func integrateWithKeyboard() {
+func integrateWithKeyboard() {
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-    }
+}
 
-    
 
-    @objc func keyboardAppear(_ notification:NSNotification) {
+@objc func keyboardAppear(_ notification:NSNotification) {
 
-        guard let userInfo = notification.userInfo else { return }
+    guard let userInfo = notification.userInfo else { return }
 
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+    var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
 
-        guard let viewController = self.parentViewController else { return }
+    guard let viewController = self.parentViewController else { return }
 
-        keyboardFrame = viewController.view.convert(keyboardFrame, from: nil)
+    keyboardFrame = viewController.view.convert(keyboardFrame, from: nil)
 
-        
 
-        var contentInset:UIEdgeInsets = self.contentInset
+    var contentInset:UIEdgeInsets = self.contentInset
 
-        contentInset.bottom = keyboardFrame.size.height + 20
+    contentInset.bottom = keyboardFrame.size.height + 20
 
-        self.contentInset = contentInset
+    self.contentInset = contentInset
 
-    }
+}
 
-    
 
-    @objc func keyboardDisappear(notification:NSNotification) {
 
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+@objc func keyboardDisappear(notification:NSNotification) {
 
-        self.contentInset = contentInset
+    let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+
+    self.contentInset = contentInset
 
     }
 
 }
+

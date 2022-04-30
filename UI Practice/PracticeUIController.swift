@@ -9,13 +9,24 @@ import UIKit
 
 class PracticeUIController: UIViewController {
 
+    @IBAction func textfield(_ sender: UIColor) {
+        
+    
+        
+    }
+    @IBOutlet weak var scrollview: UIScrollView!
+    
+    @IBOutlet weak var text: UIColor!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scrollview.integrateWithKeyboard()
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -27,3 +38,5 @@ class PracticeUIController: UIViewController {
     */
 
 }
+
+
